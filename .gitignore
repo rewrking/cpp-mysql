@@ -1,0 +1,17 @@
+# Chalet
+build/
+chalet_external/
+dist/
+.chaletrc
+.env*
+
+# Editors
+.idea/
+.vs/
+.vscode/
+.fleet/
+
+# Other
+.cache/
+Thumbs.db
+.DS_Store

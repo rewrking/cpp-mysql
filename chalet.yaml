@@ -1,0 +1,53 @@
+name: cpp-mysql
+version: "1.0.0"
+externalDependencies:
+  fmt:
+    kind: git
+    repository: git@github.com:fmtlib/fmt.git
+    tag: "9.0.0"
+  mysqlx:
+    kind: git
+    repository: git@github.com:mysql/mysql-connector-cpp.git
+    tag: "8.3.0"
+  nlohmann_json:
+    kind: git
+    repository: git@github.com:nlohmann/json.git
+    tag: v3.11.2
+defaultConfigurations:
+  - Release
+  - Debug
+targets:
+  mysqlx:
+    kind: cmakeProject
+    location: ${external:mysqlx}
+    recheck: false
+    rebuild: true
+    clean: true
+    defines[:linux]:
+      - CMAKE_POSITION_INDEPENDENT_CODE=ON
+    defines[:macos]:
+      - CMAKE_POSITION_INDEPENDENT_CODE=ON
+      - BUILD_SHARED_LIBS=OFF
+  cpp-mysql:
+    kind: executable
+    language: C++
+    settings:Cxx:
+      cppStandard: c++20
+      warningsPreset: pedantic
+      precompiledHeader: src/pch.hpp
+      includeDirs:
+        - src
+        - ${external:fmt}/include
+        - ${external:mysqlx}/include
+        - ${external:nlohmann_json}/single_include
+        - ${externalBuild:mysqlx}/include/mysqlx
+      libDirs:
+        - ${externalBuild:mysqlx}
+      links:
+        - mysqlcppconn8
+    files: src/**.cpp
+distribution:
+  all:
+    kind: bundle
+    buildTargets: "*"
+
