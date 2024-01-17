@@ -37,7 +37,7 @@ i32 Application::run(i32 argc, const char* const argv[])
 		{
 			Json data;
 			data["name"] = "The Hobbit";
-			data["author"] = "J.R.R. Tolkein";
+			data["author"] = "J.R.R. Tolkien";
 			data["year"] = "1937";
 
 			auto add = coll.add(data.dump()).execute();
