@@ -1,6 +1,6 @@
 # cpp-mysql
 
-Requires [Chalet](https://www.chalet-work.space/) to build. Only tested on Windows so far.
+Requires [Chalet](https://www.chalet-work.space/) to build. Only tested on Windows and macOS so far.
 
 1. Install [MySQL Community Server](https://dev.mysql.com/downloads/mysql/) and make sure it's running
 2. Add a database (ie. `test_db`)

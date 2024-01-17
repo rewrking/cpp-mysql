@@ -3,19 +3,19 @@
 #if defined(SAPP_MSVC)
 	#pragma warning(push)
 // #pragma warning(disable : 4189)
+#elif defined(SAPP_CLANG)
+	#pragma clang diagnostic push
+// #pragma clang diagnostic ignored "-Wdelete-non-virtual-dtor"
 #else
 	#pragma GCC diagnostic push
-// #pragma GCC diagnostic ignored "-Wpedantic"
-// #pragma GCC diagnostic ignored "-Wunused-parameter"
-// #pragma GCC diagnostic ignored "-Wtype-limits"
-// #pragma GCC diagnostic ignored "-Wshadow"
-// #pragma GCC diagnostic ignored "-Wnon-virtual-dtor"
 #endif
 
 #include <mysqlx/xdevapi.h>
 
 #if defined(SAPP_MSVC)
 	#pragma warning(pop)
+#elif defined(SAPP_CLANG)
+	#pragma clang diagnostic push
 #else
 	#pragma GCC diagnostic pop
 #endif

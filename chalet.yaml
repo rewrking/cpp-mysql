@@ -34,6 +34,7 @@ targets:
     settings:Cxx:
       cppStandard: c++20
       warningsPreset: pedantic
+      treatWarningsAsErrors: false
       precompiledHeader: src/pch.hpp
       includeDirs:
         - src
