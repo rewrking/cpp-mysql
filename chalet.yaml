@@ -23,10 +23,9 @@ targets:
     recheck: false
     rebuild: true
     clean: true
-    defines[:linux]:
+    defines[:linux|:macos]:
       - CMAKE_POSITION_INDEPENDENT_CODE=ON
     defines[:macos]:
-      - CMAKE_POSITION_INDEPENDENT_CODE=ON
       - BUILD_SHARED_LIBS=OFF
   cpp-mysql:
     kind: executable
